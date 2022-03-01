@@ -1,0 +1,25 @@
+*{
+    margin : 0;
+    padding: 0;
+}
+
+body{
+    background-color: rgb(52, 52, 69);
+}
+
+h1{
+    color : white;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#sorting-bars{
+    max-width: 80%;
+}
+
+.bars-generated{
+    width:100px;
+    background-color: rgb(210, 235, 89);
+    margin : 2px;
+}
