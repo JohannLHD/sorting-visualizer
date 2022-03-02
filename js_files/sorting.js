@@ -1,4 +1,5 @@
 import {bubbleSort} from "../js_files/bubble.js";
+import {selectionSort} from "../js_files/selection.js";
 
 /////DOM Selectors////
 let bars = document.getElementById('sorting-bars');
@@ -38,16 +39,22 @@ function generateSortingBars(){
     //Reinitialize the bars
     bars.innerHTML = "";
     arr = [];
-    createArr(arr,100);
+    createArr(arr,10);
     console.log(arr)
     addBarsHTML(arr);
 }
 
 btnNewArray.addEventListener('click',generateSortingBars);
 
+//Adding event listeners to sorting algorithms
 
 function startBubbleSort(){
     bubbleSort(arr);
 }
+
+function startSelection(){
+    selectionSort(arr);
+}
   
 btnBubble.addEventListener('click',startBubbleSort)
+btnSelection.addEventListener('click',startSelection)

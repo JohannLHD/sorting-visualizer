@@ -8,7 +8,7 @@ function swap(el1, el2) {
       const transform2 = style2.getPropertyValue("height");
       el1.style.height = transform2;
       el2.style.height = transform1;
-      return new Promise(resolve => setTimeout(resolve,20)) 
+      return new Promise(resolve => setTimeout(resolve,5)) 
 }
 
 
@@ -26,7 +26,9 @@ export async function bubbleSort(arr) {
         arr[j + 1] = temp;
       }
     }
+    document.getElementById(n-i-1).style.backgroundColor = "rgb(78, 237, 140)"
   }
+  document.getElementById(0).style.backgroundColor = "rgb(30, 201, 96)"
 }
 
 

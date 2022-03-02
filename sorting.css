@@ -23,3 +23,9 @@ h1{
     background-color: rgb(210, 235, 89);
     margin : 2px;
 }
+
+.parameters-text{
+    color: white;
+    margin-left: 15px;
+    margin-right: 5px;
+}

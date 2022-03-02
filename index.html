@@ -15,29 +15,75 @@
   </head>
   <body>
     <header>
-       <h1>Sorting visualizer</h1>
-       <nav class="navbar">
+      <h1>Sorting visualizer</h1>
+      <nav class="navbar">
         <div class="container-fluid">
-            <div class="parameters">
-              <button type = "button" class="btn btn-warning" id="new-array">New array</button>
-            </div>
-            <div class="buttons-parameters">
-              <button type = "button" class="btn btn-outline-primary" id="bubble-sort">Bubble sort</button>
-              <button type = "button" class="btn btn-outline-primary" id="selection-sort">Selection sort</button>
-              <button type = "button" class="btn btn-outline-primary" id="insertion-sort">Insertion sort</button>
-              <button type = "button" class="btn btn-outline-primary" id="quick-sort">Quick sort</button>
-              <button type = "button" class="btn btn-outline-primary" id="merge-sort">Mege sort</button>
-            </div>
+          <div class="parameters">
+            <button type="button" class="btn btn-warning" id="new-array">
+              New array
+            </button>
+            <span class = "parameters-text">Size</span>
+            <span>
+              <input
+                id="arr_sz"
+                type="range"
+                min="10"
+                max="100"
+                step="1"
+                value="50"
+              />
+            </span>
+            <span class = "parameters-text">Speed</span>
+            <span>
+              <input
+                id="arr_sp"
+                type="range"
+                min="1"
+                max="10"
+                step="1"
+                value="5"
+              />
+            </span>
+          </div>
+          <div class="buttons-parameters">
+            <button type="button" class="btn btn-outline-info" id="bubble-sort">
+              Bubble sort
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-info"
+              id="selection-sort"
+            >
+              Selection sort
+            </button>
+            <button
+              type="button"
+              class="btn btn-outline-info"
+              id="insertion-sort"
+            >
+              Insertion sort
+            </button>
+            <button type="button" class="btn btn-outline-info" id="quick-sort">
+              Quick sort
+            </button>
+            <button type="button" class="btn btn-outline-info" id="merge-sort">
+              Mege sort
+            </button>
+          </div>
         </div>
-       </nav>
+      </nav>
     </header>
-    <div class = "container d-flex" id="sorting-bars"></div>
+    <div class="container d-flex mt-4" id="sorting-bars"></div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous"
     ></script>
-    <script type ="module" src = "js_files/sorting.js"></script>
-    <script type="module" src = "/js_files/bubble.js"></script>
+    <script type="module" src="js_files/sorting.js"></script>
+    <script type="module" src="js_files/bubble.js"></script>
+    <script type="module" src="js_files/selection.js"></script>
+    <script type="module" src="js_files/insertion.js"></script>
+    <script type="module" src="js_files/quick.js"></script>
+    <script type="module" src="js_files/merge.js"></script>
   </body>
 </html>

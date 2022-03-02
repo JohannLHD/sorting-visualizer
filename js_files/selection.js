@@ -1,0 +1,40 @@
+function swap(el1, el2) {
+  const style1 = window.getComputedStyle(el1);
+  const style2 = window.getComputedStyle(el2);
+  const transform1 = style1.getPropertyValue("height");
+  const transform2 = style2.getPropertyValue("height");
+  el1.style.height = transform2;
+  el2.style.height = transform1;
+  return new Promise((resolve) => setTimeout(resolve, 200));
+}
+
+function swapArr(arr, xp, yp) {
+  var temp = arr[xp];
+  arr[xp] = arr[yp];
+  arr[yp] = temp;
+}
+
+export async function selectionSort(arr) {
+  
+  let i, j, min_idx;
+  let n = arr.length;
+
+  // One by one move boundary of unsorted subarray
+  for (i = 0; i < n - 1; i++) {
+    // Find the minimum element in unsorted array
+    min_idx = i;
+    for (j = i + 1; j < n; j++) {
+        if (arr[j] < arr[min_idx]) min_idx = j;
+    }
+    // Swap the found minimum element with the first element
+    swapArr(arr, min_idx, i);
+    const el1 = document.getElementById(min_idx);
+    const el2 = document.getElementById(i);
+    await swap(el1, el2);
+    document.getElementById(i).style.backgroundColor = "rgb(78, 237, 140)"
+    console.log(arr)
+  }
+  document.getElementById(n-1).style.backgroundColor = "rgb(78, 237, 140)"
+}
+
+
