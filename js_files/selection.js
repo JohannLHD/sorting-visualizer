@@ -1,11 +1,15 @@
-function swap(el1, el2) {
+function swap(el1, el2, speed) {
   const style1 = window.getComputedStyle(el1);
   const style2 = window.getComputedStyle(el2);
   const transform1 = style1.getPropertyValue("height");
   const transform2 = style2.getPropertyValue("height");
   el1.style.height = transform2;
   el2.style.height = transform1;
-  return new Promise((resolve) => setTimeout(resolve, 200));
+  return new Promise((resolve) => setTimeout(resolve, speed));
+}
+
+function pause(speed){
+    return new Promise((resolve) => setTimeout(resolve, speed));
 }
 
 function swapArr(arr, xp, yp) {
@@ -14,25 +18,32 @@ function swapArr(arr, xp, yp) {
   arr[yp] = temp;
 }
 
-export async function selectionSort(arr) {
+export async function selectionSort(arr,speed) {
   
   let i, j, min_idx;
   let n = arr.length;
 
   // One by one move boundary of unsorted subarray
   for (i = 0; i < n - 1; i++) {
+    let el2 = document.getElementById(i);
+    el2.style.backgroundColor = "rgb(237, 57, 105)";
     // Find the minimum element in unsorted array
     min_idx = i;
     for (j = i + 1; j < n; j++) {
+        let el3 = document.getElementById(j);
+        el3.style.backgroundColor = "rgb(237, 57, 105)";
+        await pause(speed);
+        el3.style.backgroundColor = "rgb(210, 235, 89)";
         if (arr[j] < arr[min_idx]) min_idx = j;
     }
     // Swap the found minimum element with the first element
     swapArr(arr, min_idx, i);
-    const el1 = document.getElementById(min_idx);
-    const el2 = document.getElementById(i);
-    await swap(el1, el2);
+    let el1 = document.getElementById(min_idx);
+    el2 = document.getElementById(i);
+    
+    await swap(el1, el2,speed);
+    el2.style.backgroundColor = "rgb(237, 57, 105)";
     document.getElementById(i).style.backgroundColor = "rgb(78, 237, 140)"
-    console.log(arr)
   }
   document.getElementById(n-1).style.backgroundColor = "rgb(78, 237, 140)"
 }

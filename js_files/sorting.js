@@ -9,8 +9,13 @@ let btnInsertion = document.getElementById('insertion-sort');
 let btnMerge = document.getElementById('merge-sort');
 let btnQuick = document.getElementById('quick-sort');
 let btnSelection = document.getElementById('selection-sort');
+let btnSize = document.getElementById('arr_sz');
+let btnSpeed = document.getElementById('arr_sp');
 
 let arr = [];
+
+
+/////Generate Array with corresponding bars////
 
 function createArr(arr,num){
     function generateRandom100(){
@@ -25,11 +30,11 @@ function createArr(arr,num){
 function addBarsHTML(arr){
 
     for(let i = 0 ; i<arr.length ; i++){
-        let height = arr[i]*7;
+        let height = arr[i]*0.7;
         let para = document.createElement("div");  
         para.classList.add("bars-generated");
         para.id = i;
-        para.style.height = `${height}px`
+        para.style.height = `${height}vh`
         bars.appendChild(para);
     }
 }
@@ -39,21 +44,30 @@ function generateSortingBars(){
     //Reinitialize the bars
     bars.innerHTML = "";
     arr = [];
-    createArr(arr,10);
-    console.log(arr)
+    createArr(arr,btnSize.value);
     addBarsHTML(arr);
 }
 
+btnSize.addEventListener('input',generateSortingBars);
 btnNewArray.addEventListener('click',generateSortingBars);
 
 //Adding event listeners to sorting algorithms
 
+let speedParam = 2000-btnSpeed.value; 
+
+function getSpeed(){
+    speedParam = 2000-btnSpeed.value; 
+}
+
+btnSpeed.addEventListener('input',getSpeed);
+
 function startBubbleSort(){
-    bubbleSort(arr);
+    console.log(speedParam)
+    bubbleSort(arr,speedParam);
 }
 
 function startSelection(){
-    selectionSort(arr);
+    selectionSort(arr,speedParam);
 }
   
 btnBubble.addEventListener('click',startBubbleSort)
