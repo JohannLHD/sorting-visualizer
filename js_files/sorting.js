@@ -1,7 +1,8 @@
 import {bubbleSort} from "../js_files/bubble.js";
 import {selectionSort} from "../js_files/selection.js";
+import {insertionSort} from "../js_files/insertion.js";
 
-/////DOM Selectors////
+//////////////////DOM Selectors///////////////
 let bars = document.getElementById('sorting-bars');
 let btnNewArray = document.getElementById('new-array');
 let btnBubble = document.getElementById('bubble-sort');
@@ -15,7 +16,7 @@ let btnSpeed = document.getElementById('arr_sp');
 let arr = [];
 
 
-/////Generate Array with corresponding bars////
+////////////////Generate  bars////////////////
 
 function createArr(arr,num){
     function generateRandom100(){
@@ -51,24 +52,30 @@ function generateSortingBars(){
 btnSize.addEventListener('input',generateSortingBars);
 btnNewArray.addEventListener('click',generateSortingBars);
 
-//Adding event listeners to sorting algorithms
+////////////////Speed Param////////////////
 
-let speedParam = 2000-btnSpeed.value; 
+let speedParam = 1000-btnSpeed.value; 
 
 function getSpeed(){
-    speedParam = 2000-btnSpeed.value; 
+    speedParam = 1000-btnSpeed.value; 
 }
 
 btnSpeed.addEventListener('input',getSpeed);
 
+////////////////Sorting Algo////////////////
+
 function startBubbleSort(){
-    console.log(speedParam)
     bubbleSort(arr,speedParam);
 }
 
 function startSelection(){
     selectionSort(arr,speedParam);
 }
+
+function startInsert(){
+    insertionSort(arr,speedParam);
+}
   
 btnBubble.addEventListener('click',startBubbleSort)
 btnSelection.addEventListener('click',startSelection)
+btnInsertion.addEventListener('click',startInsert)
