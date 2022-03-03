@@ -8,7 +8,6 @@ let animationSpeed = document.querySelector(".arr_sp");
 function createBars(size) {
     let array = [];
     let barContainer = document.getElementById("sorting-bars");
-    console.log(array_size.value)
     for(let i = 1; i <= size; i++) {
         let barHeight = Math.floor(Math.random()*maxBarHeight) + 5;
         array.push(barHeight);
@@ -29,7 +28,6 @@ function removeBars() {
 // creates new bars array when "new array" button is clicked
 let newArrayBtn = document.getElementById("new-array");
 newArrayBtn.addEventListener("click", () => {
-    console.log("clicked")
     removeBars();
     createBars(array_size.value);
 }); 
@@ -76,5 +74,12 @@ let mergeSortBtn = document.getElementById("merge-sort");
 mergeSortBtn.addEventListener("click", () => {
     let barsArray = document.querySelectorAll(".bars");
     mergeSort(barsArray, 0, barsArray.length-1);
+});
+
+// starts quick sort when "quick sort" button is clicked
+let quickSortBtn = document.getElementById("quick-sort");
+quickSortBtn.addEventListener("click", () => {
+    let barsArray = document.querySelectorAll(".bars");
+    quickSort(barsArray, 0, barsArray.length-1);
 });
 

@@ -1,7 +1,7 @@
 async function merge(barsArray, leftIndex, midIndex, rightIndex) {
     // shows mergesort has been called in which part of barsArray by changing its color to blue
     for (let i = leftIndex; i <= rightIndex; i++) {
-        barsArray[i].style.background = "#0072ff";
+        barsArray[i].style.background = "#E8AABE";
     }
     await new Promise(resolve => setTimeout(resolve, delay));
     

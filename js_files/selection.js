@@ -4,6 +4,18 @@ async function selectionSort(barsArray) {
   // stores index of bar with minimum height during the process
   let minIndex = 0;
 
+  // change color of current array selected for to red
+  for (let ind = 0; ind < n; ind++) {
+    barsArray[ind].style.background = "#E8AABE";
+   }
+   await new Promise(resolve => setTimeout(resolve, delay));
+
+  // change back color of current array selected for to orange
+  for (let ind = 0; ind < n; ind++) {
+      barsArray[ind].style.background = "#ffd000";
+   }
+  await new Promise(resolve => setTimeout(resolve, delay));
+
   for (let i = 0; i < n-1; i++) {
       minIndex = i;
 

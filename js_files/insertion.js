@@ -1,6 +1,18 @@
 async function insertionSort(barsArray) {
   // n is the total number of bars
   let n = barsArray.length;
+
+   // change color of current array selected for to red
+   for (let ind = 0; ind < n; ind++) {
+    barsArray[ind].style.background = "#E8AABE";
+   }
+   await new Promise(resolve => setTimeout(resolve, delay));
+
+  // change back color of current array selected for to orange
+  for (let ind = 0; ind < n; ind++) {
+      barsArray[ind].style.background = "#ffd000";
+   }
+  await new Promise(resolve => setTimeout(resolve, delay));
   
   for (let i = 1; i < n; i++) {
 
@@ -13,6 +25,7 @@ async function insertionSort(barsArray) {
      await new Promise(resolve => setTimeout(resolve, delay));
 
       while (j >= 0 && parseInt(barsArray[j].style.height) > key) {
+          console.log(barsArray[j].style.height)
 
           await swap(barsArray[j+1], barsArray[j]);
 
