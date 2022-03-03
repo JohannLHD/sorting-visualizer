@@ -17,6 +17,8 @@ h1{
 #sorting-bars{
     max-width: 80%;
     justify-content: center;
+    align-items: flex-end;
+    margin-top: 80px;
 }
 
 /* .bars-generated{
