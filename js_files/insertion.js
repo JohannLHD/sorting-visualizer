@@ -1,29 +1,45 @@
-import {swap,pause} from "../js_files/utilities.js";
+async function insertionSort(barsArray) {
+  // n is the total number of bars
+  let n = barsArray.length;
+  
+  for (let i = 1; i < n; i++) {
 
-export async function insertionSort(arr,speed) {
-  let i, key, j;
-  let n = arr.length
-  for (i = 1; i < n; i++) {
-    const el1 = document.getElementById(i);
-    el1.style.backgroundColor = "rgb(237, 57, 105)";
-    key = arr[i];
-    j = i - 1;
+     let j = i-1;
+     let key = parseInt(barsArray[i].style.height);
 
-    /* Move elements of arr[0..i-1], that are 
-        greater than key, to one position ahead 
-        of their current position */
-    while (j >= 0 && arr[j] > key) {
-      const el2 = document.getElementById(j);
-      const el3 = document.getElementById(j+1);
-      el2.style.backgroundColor = "rgb(237, 57, 105)";
-      el3.style.backgroundColor = "rgb(237, 57, 105)";
-      await swap(el2, el3, speed);
-      el2.style.backgroundColor = "rgb(30, 201, 96)";
-      el3.style.backgroundColor = "rgb(30, 201, 96)";
-      arr[j + 1] = arr[j];
-      j = j - 1;
-    }
-    arr[j + 1] = key;
-    el1.style.backgroundColor = "rgb(30, 201, 96)";
+     // change the color of the bar to be compared to blue
+     barsArray[j+1].style.background = "#0072ff";
+     barsArray[j].style.background = "#0072ff";
+     await new Promise(resolve => setTimeout(resolve, delay));
+
+      while (j >= 0 && parseInt(barsArray[j].style.height) > key) {
+
+          await swap(barsArray[j+1], barsArray[j]);
+
+          // change color back to normal
+          barsArray[j+1].style.background = "#15fa00";
+          barsArray[j].style.background = "#15fa00";
+          await new Promise(resolve => setTimeout(resolve, delay));
+
+          j--;
+      
+          // change the color of the first bar smaller or equal to the key's bar
+          if (j >= 0) {
+              barsArray[j].style.background = "#0072ff";
+              await new Promise(resolve => setTimeout(resolve, delay));
+          }
+      }
+      // change color back to normal 
+      if (j >= 0)
+      barsArray[j].style.background = "#15fa00";
+      barsArray[j+1].style.background = "#15fa00";
+      await new Promise(resolve => setTimeout(resolve, delay));
+      //barsArray[i].style.background = "#15fa00";
   }
+
+  // barsArray is sorted, change bar's color to green
+  for (let i = 0; i < n; i++) {
+      barsArray[i].style.background = "#15fa00";
+  }
+  await new Promise(resolve => setTimeout(resolve, delay));
 }

@@ -1,81 +1,80 @@
-import {bubbleSort} from "../js_files/bubble.js";
-import {selectionSort} from "../js_files/selection.js";
-import {insertionSort} from "../js_files/insertion.js";
+let array_size = document.querySelector(".arr_sz");
+let animationSpeed = document.querySelector(".arr_sp");
 
-//////////////////DOM Selectors///////////////
-let bars = document.getElementById('sorting-bars');
-let btnNewArray = document.getElementById('new-array');
-let btnBubble = document.getElementById('bubble-sort');
-let btnInsertion = document.getElementById('insertion-sort');
-let btnMerge = document.getElementById('merge-sort');
-let btnQuick = document.getElementById('quick-sort');
-let btnSelection = document.getElementById('selection-sort');
-let btnSize = document.getElementById('arr_sz');
-let btnSpeed = document.getElementById('arr_sp');
+//let delay = 1000;        // In milliseconds
+//let maxBarHeight = 60;   // In vh
 
-let arr = [];
-
-
-////////////////Generate  bars////////////////
-
-function createArr(arr,num){
-    function generateRandom100(){
-        return Math.floor(Math.random()*100)+1;
-    } 
-    for(let i = 0 ; i < num ; i++){
-        arr.push(generateRandom100())
-    }
-    return arr
-}
-
-function addBarsHTML(arr){
-
-    for(let i = 0 ; i<arr.length ; i++){
-        let height = arr[i]*0.7;
-        let para = document.createElement("div");  
-        para.classList.add("bars-generated");
-        para.id = i;
-        para.style.height = `${height}vh`
-        bars.appendChild(para);
+// create given number of bars
+function createBars(size) {
+    let array = [];
+    let barContainer = document.getElementById("sorting-bars");
+    console.log(array_size.value)
+    for(let i = 1; i <= size; i++) {
+        let barHeight = Math.floor(Math.random()*maxBarHeight) + 5;
+        array.push(barHeight);
+        let bar = document.createElement("div");
+        bar.classList.add("bars")
+        bar.style.height = barHeight + "vh";
+        barContainer.appendChild(bar);
     }
 }
 
-//Generate 100 bars randomly
-function generateSortingBars(){
-    //Reinitialize the bars
-    bars.innerHTML = "";
-    arr = [];
-    createArr(arr,btnSize.value);
-    addBarsHTML(arr);
+// removes all the bars from the bar container
+function removeBars() {
+    document.querySelectorAll(".bars").forEach((node) => {
+        node.remove();
+    });
 }
 
-btnSize.addEventListener('input',generateSortingBars);
-btnNewArray.addEventListener('click',generateSortingBars);
+// creates new bars array when "new array" button is clicked
+let newArrayBtn = document.getElementById("new-array");
+newArrayBtn.addEventListener("click", () => {
+    console.log("clicked")
+    removeBars();
+    createBars(array_size.value);
+}); 
 
-////////////////Speed Param////////////////
+// change number of bars when changing the range / moving the slider of "array size"
+array_size.addEventListener("input", () => {
+    removeBars();
+    createBars(array_size.value);
+});
 
-let speedParam = 1000-btnSpeed.value; 
-
-function getSpeed(){
-    speedParam = 1000-btnSpeed.value; 
-}
-
-btnSpeed.addEventListener('input',getSpeed);
+// changes the duration of transition and delay of setTimeout when changing the slider / range of "speed"
+animationSpeed.addEventListener("input", () => {
+    delay = 1000 - animationSpeed.value + 100;
+    document.querySelectorAll(".bars").forEach((bar) => {
+        bar.style.transitionDuration = ((delay/1000)*0.7) + "s";
+    });  
+});
 
 ////////////////Sorting Algo////////////////
 
-function startBubbleSort(){
-    bubbleSort(arr,speedParam);
-}
+// starts bubble sort when "bubble sort" button is clicked
+let bubbleSortBtn = document.getElementById("bubble-sort");
+bubbleSortBtn.addEventListener("click", () => {
+    let barsArray = document.querySelectorAll(".bars");
+    bubbleSort(barsArray);
+});
 
-function startSelection(){
-    selectionSort(arr,speedParam);
-}
+// starts insertion sort when "insertion sort" button is clicked
+let insertionSortBtn = document.getElementById("insertion-sort");
+insertionSortBtn.addEventListener("click", () => {
+    let barsArray = document.querySelectorAll(".bars");
+    insertionSort(barsArray);
+});
 
-function startInsert(){
-    insertionSort(arr,speedParam);
-}
-  
-btnBubble.addEventListener('click',startBubbleSort)
-btnSelection.addEventListener('click',startSelection)
-btnInsertion.addEventListener('click',startInsert)
+// starts sorting using selection sort when "selection sort" button is clicked
+let selectionSortBtn = document.getElementById("selection-sort");
+selectionSortBtn.addEventListener("click", () => {
+    let barsArray = document.querySelectorAll(".bars");
+    selectionSort(barsArray);
+});
+
+// starts merge sort when "merge sort" button is clicked
+let mergeSortBtn = document.getElementById("merge-sort");
+mergeSortBtn.addEventListener("click", () => {
+    let barsArray = document.querySelectorAll(".bars");
+    mergeSort(barsArray, 0, barsArray.length-1);
+});
+

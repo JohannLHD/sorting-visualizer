@@ -16,16 +16,26 @@ h1{
 
 #sorting-bars{
     max-width: 80%;
+    justify-content: center;
 }
 
-.bars-generated{
+/* .bars-generated{
     width:100px;
     background-color: rgb(210, 235, 89);
     margin : 2px;
-}
+}  */
 
 .parameters-text{
     color: white;
     margin-left: 15px;
     margin-right: 5px;
 }
+
+#sorting-bars .bars {
+    width: 100px;
+    background: #ffd000;
+    border: 2px solid black;
+    transition-property: all;
+    transition-duration: 0.7s;
+    transition-timing-function: ease;
+  }
