@@ -18,3 +18,5 @@ This application supports the following sorting algorithms:
 3. **Selection Sort**.
 4. **Merge Sort**.
 5. **Quick Sort**.
+
+<img width="1512" alt="Capture d’écran 2022-05-05 à 12 16 11" src="https://user-images.githubusercontent.com/95428531/166904186-5535719c-4a68-41a8-8a93-b2b75b4211bf.png">
